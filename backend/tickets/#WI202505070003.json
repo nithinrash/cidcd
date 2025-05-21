@@ -1,0 +1,18 @@
+[
+  {
+    "role": "user",
+    "user": "give me faisals email"
+  },
+  {
+    "role": "ai",
+    "ai": "Faisal's email is faisal.shaikh@wingerit.in."
+  },
+  {
+    "role": "user",
+    "user": "what all services you provide"
+  },
+  {
+    "role": "ai",
+    "ai": "We provide a wide range of services at Winger IT Solutions, including:\n\n1. **IT Infrastructure Support**: We offer end-to-end support for all your infrastructure needs, including laptops, desktops, servers, workstations, storage solutions, and networking products.\n\n2. **Managed IT Services**: We provide proactive management and maintenance of your IT systems to ensure they run smoothly and efficiently.\n\n3. **AMCs (Annual Maintenance Contracts)**: We offer comprehensive AMCs to ensure your IT systems are properly maintained and repaired, reducing downtime and costs.\n\n4. **Fuji Film Tapes & Drives**: We have a wide range of Fuji Film Tapes & Drives available for sale and rent.\n\n5. **Rental Equipment**: We offer a wide range of rental equipment, including laptops, desktops, servers, and networking products.\n\n6. **Sales**: We sell a wide range of IT equipment, including laptops, desktops, servers, and networking products.\n\n7. **Embedded Systems & IoT**: We provide solutions for embedded systems and IoT, including design, development, and deployment.\n\n8. **IT Solutions**: We provide a wide range of IT solutions, including cloud-based solutions, API integrations, and system modernization.\n\n9. **Network Security**: We provide advanced threat detection, data encryption, and network security solutions to protect your business from cyber threats.\n\n10. **Penetration Testing**: We conduct penetration testing to identify vulnerabilities in your network and systems.\n\n11. **Compliance Audits**: We conduct compliance audits to ensure your business is in compliance with regulatory requirements.\n\n12. **Cyber Resilience**: We provide solutions to help your business recover from cyber attacks and maintain business continuity.\n\n13. **Software Solutions**: We provide software solutions, including design, development, and deployment.\n\n14. **Storage Solutions**: We provide storage solutions, including design, deployment, and management.\n\n15. **Cloud Services**: We provide cloud services, including cloud infrastructure, cloud management, and cloud security.\n\nThese are just some of the services we provide at Winger IT Solutions. If you have a specific requirement, feel free to contact us and we'll be happy to help."
+  }
+]

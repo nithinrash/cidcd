@@ -1,0 +1,17 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+spec:
+  template:
+    spec:
+      volumes:
+      - name: nginx-config
+        configMap:
+          name: nginx-config
+      containers:
+      - name: YOUR_ACTUAL_CONTAINER_NAME  # Replace this with the output from the command above
+        volumeMounts:
+        - name: nginx-config
+          mountPath: /etc/nginx/conf.d/

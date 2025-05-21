@@ -1,0 +1,60 @@
+:root {
+    --primary-color: #1a73e8;
+    --secondary-color: #72c0ff;
+}
+
+body {
+    background: linear-gradient(145deg, #e3f2fd, #ffffff);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    max-width: 180px;
+    margin-bottom: 1rem;
+}
+
+.gradient-text {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+.chat-messages {
+    max-height: 500px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    max-width: 80%;
+    margin: 0.5rem 0;
+    padding: 0.75rem;
+    border-radius: 10px;
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: #e6f3ff;
+    margin-left: auto;
+}
+
+.ai-message {
+    align-self: flex-start;
+    background-color: #f0f0f0;
+    margin-right: auto;
+}
+
+.feature-badges .badge {
+    margin: 0 0.25rem;
+}

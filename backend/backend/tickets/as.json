@@ -1,0 +1,18 @@
+[
+  {
+    "role": "user",
+    "content": "hi"
+  },
+  {
+    "role": "assistant",
+    "content": "Welcome to Winger IT Solutions' customer support. How can I assist you today?"
+  },
+  {
+    "role": "user",
+    "content": "my name is Kumaru"
+  },
+  {
+    "role": "assistant",
+    "content": "Nice to meet you, Kumaru. I'm here to help with any questions or issues you may have. Can you please tell me a little bit more about what brings you to our support today? Are you experiencing any technical difficulties or do you have a product inquiry?"
+  }
+]

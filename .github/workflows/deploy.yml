@@ -1,0 +1,52 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # change if your default branch is different
+
+env:
+  DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+  DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+  K3S_SERVER_IP: ${{ secrets.K3S_SERVER_IP }}
+  K3S_SSH_USER: ${{ secrets.K3S_SSH_USER }}
+  K3S_SSH_KEY: ${{ secrets.K3S_SSH_KEY }}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ env.DOCKERHUB_USERNAME }}
+        password: ${{ env.DOCKERHUB_PASSWORD }}
+
+    - name: Build and push frontend image
+      run: |
+        docker build -t ${{ env.DOCKERHUB_USERNAME }}/my-nginx-frontend:latest ./frontend
+        docker push ${{ env.DOCKERHUB_USERNAME }}/my-nginx-frontend:latest
+
+    - name: Build and push backend image
+      run: |
+        docker build -t ${{ env.DOCKERHUB_USERNAME }}/my-fastapi-backend:latest ./backend
+        docker push ${{ env.DOCKERHUB_USERNAME }}/my-fastapi-backend:latest
+
+    - name: Setup SSH key
+      uses: webfactory/ssh-agent@v0.5.4
+      with:
+        ssh-private-key: ${{ env.K3S_SSH_KEY }}
+
+    - name: Deploy to K3s cluster
+      run: |
+        ssh -o StrictHostKeyChecking=no ${{ env.K3S_SSH_USER }}@${{ env.K3S_SERVER_IP }} << 'EOF'
+          kubectl -n production rollout restart deployment/frontend
+          kubectl -n production rollout restart deployment/backend
+        EOF

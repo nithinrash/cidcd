@@ -1,0 +1,26 @@
+[
+  {
+    "role": "user",
+    "user": "hi"
+  },
+  {
+    "role": "ai",
+    "ai": "Hello! How can I assist you today? Are you looking for information about our services at Winger IT Solutions, or do you have a specific question or project in mind?"
+  },
+  {
+    "role": "user",
+    "user": "what is your name"
+  },
+  {
+    "role": "ai",
+    "ai": "Nice to meet you. My name is AI Assistant, and I'm a part of Winger IT Solutions' customer support team. I'm here to help answer any questions you may have or provide information about our products and services. How can I assist you further?"
+  },
+  {
+    "role": "user",
+    "user": "to whome can i contect"
+  },
+  {
+    "role": "ai",
+    "ai": "If you'd like to get in touch with us directly, you can reach out to the following:\n\n- Email: You can send an email to `contact@wingerit.com` or `hr@wingerit.in`.\n- Phone: You can call us at `91-9035261715` or `080) 8893 5304` (Monday to Saturday, 9:30 am to 6:30 pm).\n- Address: Our office is located at #669 D, 2nd and 3rd floor, Brindavan Nagar, 80 feet road, 1st stage, 2nd Block, HBR layout, Bengaluru, Karnataka 560043.\n\nIf you'd like to connect with a specific person, you can reach out to Faisal Shaikh at `faisal.shaikh@wingerit.in` or `+91 9035261715`."
+  }
+]

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Winger IT - AI Support</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="logo.png" alt="Winger IT Logo" class="logo">
+            <h1>Winger IT Solutions</h1>
+            <h3>AI Support Desk</h3>
+        </header>
+
+        <div class="feature-badges">
+            <span>📧 Email Notification</span>
+            <span>🧠 Smart Memory</span>
+            <span>📄 Document-Aware</span>
+            <span>👩‍💼 Human Escalation</span>
+        </div>
+
+        <div class="ticket-section">
+            <input
+                type="text"
+                id="ticketInput"
+                placeholder="Enter ticket number or leave blank"
+            >
+            <button onclick="startChat()">Start Chat</button>
+        </div>
+
+        <div id="chatContainer" class="chat-container" style="display:none;">
+            <div id="chatMessages" class="chat-messages"></div>
+            <div class="chat-input">
+                <input
+                    type="text"
+                    id="userMessage"
+                    placeholder="Type your message..."
+                >
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

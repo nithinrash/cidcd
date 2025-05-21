@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fastapi-backend
+  template:
+    metadata:
+      labels:
+        app: fastapi-backend
+    spec:
+      containers:
+        - name: fastapi-backend
+          image: nkrash/my-fastapi-backend:latest
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 4Gi
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 5      # Added timeout
+            failureThreshold: 3    # Added failureThreshold
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 5      # Added timeout
+            failureThreshold: 3    # Added failureThreshold
+          lifecycle:        # Added lifecycle hooks
+            preStop:          # Handles SIGTERM from Kubernetes
+              exec:
+                command: ["/bin/sh", "-c", "sleep 5"]  #  Add a sleep before the container terminates
+          # terminationMessagePolicy: File #default
+          # terminationMessagePath: /dev/termination-log #default
+      terminationGracePeriodSeconds: 30 # Kubernetes will wait 30 seconds before killing the pod
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fastapi-backend-service
+spec:
+  selector:
+    app: fastapi-backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: ClusterIP

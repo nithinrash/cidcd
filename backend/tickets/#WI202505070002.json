@@ -1,0 +1,10 @@
+[
+  {
+    "role": "user",
+    "user": "hi, im ravi"
+  },
+  {
+    "role": "ai",
+    "ai": "Hello Ravi! I'm Faisal from Winger IT Solutions. How can I assist you today? Are you looking for information about our services, or do you have a specific project in mind that you'd like to discuss?"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "role": "user",
+    "user": "hi there"
+  },
+  {
+    "role": "ai",
+    "ai": "Hello! Welcome to Winger IT Solutions. How can I assist you today? Would you like to learn more about our services or discuss a specific project?"
+  },
+  {
+    "role": "user",
+    "user": "hi im faisal"
+  },
+  {
+    "role": "ai",
+    "ai": "Nice to meet you, Faisal! I'm here to help with any questions or concerns you might have. You're reaching out to us from faisal.shaikh@wingerit.in, so I'm assuming you're a valued customer or someone interested in our services. How can I assist you today?"
+  },
+  {
+    "role": "user",
+    "user": "what is my name ??"
+  },
+  {
+    "role": "ai",
+    "ai": "Your name is Faisal, and your email address is faisal.shaikh@wingerit.in. You also provided a phone number +91 9035261715, which matches the one associated with Winger IT Solutions. Is there something specific you'd like to discuss or ask about?"
+  }
+]
