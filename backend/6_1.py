@@ -27,7 +27,7 @@ os.makedirs(TICKET_DIR, exist_ok=True)
 llm = ChatGroq(
     model="llama-3.1-8b-instant",
     temperature=0.7,
-    api_key="gsk_uwV47ExlCVe0MKFO9AXGWGdyb3FY1Pag5N0wiJSftpwLL1L1LsvbuL"  # Make sure this is correct
+    api_key="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"  # Make sure this is correct
 )
 
 # Load vector store and embedding model (RAG)
