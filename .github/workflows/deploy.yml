@@ -3,14 +3,13 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - master  # change if your default branch is different
+      - master  # or 'main' depending on your branch
 
 env:
   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
   DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
   K3S_SERVER_IP: ${{ secrets.K3S_SERVER_IP }}
   K3S_SSH_USER: ${{ secrets.K3S_SSH_USER }}
-  K3S_SSH_KEY: ${{ secrets.K3S_SSH_KEY }}
 
 jobs:
   build-and-deploy:
@@ -42,11 +41,11 @@ jobs:
     - name: Setup SSH key
       uses: webfactory/ssh-agent@v0.5.4
       with:
-        ssh-private-key: ${{ env.K3S_SSH_KEY }}
+        ssh-private-key: ${{ secrets.K3S_SSH_KEY }}
 
     - name: Deploy to K3s cluster
       run: |
         ssh -o StrictHostKeyChecking=no ${{ env.K3S_SSH_USER }}@${{ env.K3S_SERVER_IP }} << 'EOF'
-          kubectl -n production rollout restart deployment/frontend
-          kubectl -n production rollout restart deployment/backend
+          sudo k3s kubectl -n production rollout restart deployment frontend
+          sudo k3s kubectl -n production rollout restart deployment backend
         EOF
