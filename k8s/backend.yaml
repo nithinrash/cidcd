@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: nkrash/my-fastapi-backend:latest
+        image: nkrash/my-fastapi-backend:placeholder
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
