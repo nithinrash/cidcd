@@ -3,13 +3,14 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - master  # or 'main' depending on your branch
+      - master  # or 'main'
 
 env:
   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
   DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
   K3S_SERVER_IP: ${{ secrets.K3S_SERVER_IP }}
   K3S_SSH_USER: ${{ secrets.K3S_SSH_USER }}
+  IMAGE_TAG: build-${{ github.run_number }}
 
 jobs:
   build-and-deploy:
@@ -30,13 +31,13 @@ jobs:
 
     - name: Build and push frontend image
       run: |
-        docker build -t ${{ env.DOCKERHUB_USERNAME }}/my-static-site17:latest ./frontend
-        docker push ${{ env.DOCKERHUB_USERNAME }}/my-static-site17:latest
+        docker build -t ${{ env.DOCKERHUB_USERNAME }}/my-static-site17:${{ env.IMAGE_TAG }} ./frontend
+        docker push ${{ env.DOCKERHUB_USERNAME }}/my-static-site17:${{ env.IMAGE_TAG }}
 
     - name: Build and push backend image
       run: |
-        docker build -t ${{ env.DOCKERHUB_USERNAME }}/my-fastapi-backend:latest ./backend
-        docker push ${{ env.DOCKERHUB_USERNAME }}/my-fastapi-backend:latest
+        docker build -t ${{ env.DOCKERHUB_USERNAME }}/my-fastapi-backend:${{ env.IMAGE_TAG }} ./backend
+        docker push ${{ env.DOCKERHUB_USERNAME }}/my-fastapi-backend:${{ env.IMAGE_TAG }}
 
     - name: Setup SSH key
       uses: webfactory/ssh-agent@v0.5.4
@@ -45,7 +46,7 @@ jobs:
 
     - name: Deploy to K3s cluster
       run: |
-        ssh -o StrictHostKeyChecking=no ${{ env.K3S_SSH_USER }}@${{ env.K3S_SERVER_IP }} << 'EOF'
-          sudo k3s kubectl -n production rollout restart deployment frontend
-          sudo k3s kubectl -n production rollout restart deployment backend
+        ssh -o StrictHostKeyChecking=no ${{ env.K3S_SSH_USER }}@${{ env.K3S_SERVER_IP }} << EOF
+          sudo k3s kubectl set image deployment/frontend frontend=${{ env.DOCKERHUB_USERNAME }}/my-static-site17:${{ env.IMAGE_TAG }} -n production
+          sudo k3s kubectl set image deployment/backend backend=${{ env.DOCKERHUB_USERNAME }}/my-fastapi-backend:${{ env.IMAGE_TAG }} -n production
         EOF
