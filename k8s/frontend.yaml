@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: nkrash/my-static-site17:latest
+        image: nkrash/my-static-site17:build-v3
         imagePullPolicy: Always
         ports:
         - containerPort: 80
